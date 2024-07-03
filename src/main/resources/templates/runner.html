@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ITES Asset Collector</title>
+    <link rel="stylesheet" type="text/css" th:href="@{styles/ites.css}">
+    <style>
+        /* Spinner styles */
+        .spinner-container {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000; /* Ensure it's on top of everything */
+        }
+
+        .spinner {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Disable form */
+        .disabled-form {
+            pointer-events: none; /* Disable all clicks */
+            opacity: 0.6; /* Make it look disabled */
+        }
+    </style>
+</head>
+<body>
+<div class="content-container">
+    <div class="header">
+        <img th:src="@{images/logo.png}" alt="Fujifilm Value from Innovation">
+        <span>FUJIFILM Business Innovation</span>
+    </div>
+    <div class="divider"></div>
+    <div class="content">
+        <div class="form-container">
+            <form id="assetForm" method="post" th:action="@{/process}">
+                <div class="form-group">
+                    <label for="taskName">Task Name:</label>
+                    <input type="text" id="taskName" name="taskName" required>
+                </div>
+                <div class="form-group">
+                    <label for="ipStartRange">IP Start Range:</label>
+                    <input type="text" id="ipStartRange" name="ipStartRange" required>
+                </div>
+                <div class="form-group">
+                    <label for="ipEndRange">IP End Range:</label>
+                    <input type="text" id="ipEndRange" name="ipEndRange" required>
+                </div>
+                <div class="form-group">
+                    <label for="snmpCommunityName">SNMP Community Name:</label>
+                    <input type="text" id="snmpCommunityName" name="snmpCommunityName">
+                </div>
+                <div class="form-group">
+                    <label for="snmpVersion">SNMP Version:</label>
+                    <select id="snmpVersion" name="snmpVersion" required>
+                        <option value="1">1</option>
+                        <option value="2c">2c</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="form-group submit-group">
+                    <input type="submit" value="Start">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Spinner -->
+<div class="spinner-container" id="spinnerContainer">
+    <div class="spinner"></div>
+</div>
+
+<script>
+    document.getElementById("assetForm").addEventListener("submit", function() {
+        // Show spinner
+        document.getElementById("spinnerContainer").style.display = "block";
+
+        // Disable form
+        this.classList.add("disabled-form");
+    });
+</script>
+</body>
+</html>

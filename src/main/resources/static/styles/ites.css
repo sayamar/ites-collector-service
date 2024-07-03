@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.content-container {
+    width: 600px;
+    height: 500px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.header {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.header img {
+    height: 42px;
+    width: 152px;
+    flex-shrink: 0;
+}
+
+.header span {
+    margin-left: 20px;
+    font-size: 18px;
+    color: #333;
+    flex-grow: 1;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.form-group label {
+    width: 150px; /* Fixed width for labels */
+    margin-right: 10px;
+    font-weight: bold;
+    text-align: left; /* Align text to the left */
+}
+
+.form-group input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex-grow: 1; /* Ensures the input field takes up available space */
+    max-width: 500px; /* Optional: Maximum width for input fields */
+}
+
+.form-group input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.submit-group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Additional CSS styles for tables */
+.table-container {
+    max-width: 800px; /* Adjust max-width as needed */
+    margin: 20px auto; /* Center align and add space around tables */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    border: 1px solid #ccc; /* Optional: Add border around tables */
+    border-radius: 5px; /* Optional: Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for styling */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0; /* Remove default margin */
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Optional: Add bottom border for rows */
+}
+
+th {
+    background-color: #f2f2f2; /* Optional: Gray background for header */
+}
+

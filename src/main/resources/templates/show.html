@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Devices</title>
+    <link rel="stylesheet" type="text/css" th:href="@{styles/ites.css}">
+    <style>
+        .container {
+            text-align: center;
+            overflow-y: auto; /* Enable vertical scrolling for the main container */
+            height: 100vh; /* Set the container height to viewport height */
+            padding: 20px; /* Add padding for better spacing */
+        }
+        .table-container {
+            max-width: 800px; /* Adjust max-width as needed */
+            margin: auto;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            margin-bottom: 20px; /* Adjust spacing between tables */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for styling */
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Optional: Add bottom border for rows */
+        }
+        th {
+            background-color: #f2f2f2; /* Optional: Gray background for header */
+        }
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tables = document.querySelectorAll("table");
+
+            tables.forEach((table) => {
+                const headers = table.querySelectorAll("th");
+
+                headers.forEach((header, columnIndex) => {
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.placeholder = `Filter ${header.innerText}`;
+                    input.addEventListener("keyup", function() {
+                        const filter = input.value.toLowerCase();
+                        const rows = table.querySelectorAll("tbody tr");
+
+                        rows.forEach((row) => {
+                            const cell = row.querySelectorAll("td")[columnIndex];
+                            if (cell) {
+                                const cellText = cell.innerText.toLowerCase();
+                                if (cellText.includes(filter)) {
+                                    row.style.display = "";
+                                } else {
+                                    row.style.display = "none";
+                                }
+                            }
+                        });
+                    });
+                    header.appendChild(input);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <h2>Devices Overview</h2>
+
+    <div class="table-container">
+        <h3>PCs</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Host Name</th>
+                <th>Model</th>
+                <th>Manufacturer</th>
+                <!-- Add more columns as needed -->
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Use Thymeleaf iteration to populate rows dynamically -->
+            <tr th:each="pc : ${pcs}">
+                <td th:text="${pc.ipAddress}">PC IP Address</td>
+                <td th:text="${pc.hostname}">PC HostName</td>
+                <td th:text="${pc.model}">PC Model</td>
+                <td th:text="${pc.manufacturer}">PC Manufacturer</td>
+                <!-- Add more columns as needed -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h3>Printers</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Host Name</th>
+                <th>Model</th>
+                <th>Manufacturer</th>
+                <!-- Add more columns as needed -->
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Use Thymeleaf iteration to populate rows dynamically -->
+            <tr th:each="printer : ${printers}">
+                <td th:text="${printer.ipAddress}">Printer IP Address</td>
+                <td th:text="${printer.hostname}">Printer Name</td>
+                <td th:text="${printer.model}">Printer Model</td>
+                <td th:text="${printer.manufacturer}">Printer Manufacturer</td>
+                <!-- Add more columns as needed -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h3>Routers</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Host Name</th>
+                <th>Model</th>
+                <th>Manufacturer</th>
+                <!-- Add more columns as needed -->
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Use Thymeleaf iteration to populate rows dynamically -->
+            <tr th:each="router : ${routers}">
+                <td th:text="${router.ipAddress}">Router IP Address</td>
+                <td th:text="${router.hostname}">Router Name</td>
+                <td th:text="${router.model}">Router Model</td>
+                <td th:text="${router.manufacturer}">Router Manufacturer</td>
+                <!-- Add more columns as needed -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h3>Switches</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Host Name</th>
+                <th>Model</th>
+                <th>Manufacturer</th>
+                <!-- Add more columns as needed -->
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Use Thymeleaf iteration to populate rows dynamically -->
+            <tr th:each="switch : ${switches}">
+                <td th:text="${switch.ipAddress}">Switch IP Address</td>
+                <td th:text="${switch.hostname}">Switch Name</td>
+                <td th:text="${switch.model}">Switch Model</td>
+                <td th:text="${switch.manufacturer}">Switch Manufacturer</td>
+                <!-- Add more columns as needed -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

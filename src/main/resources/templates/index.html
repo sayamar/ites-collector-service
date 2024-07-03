@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Job Attributes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+<link th:href="@{/styles/main.css}" rel="stylesheet" />
+<script type="text/javascript" th:src="@{/js/index.js}"></script>
+</head>
+<body onFocus="parent_disable();" onclick="parent_disable();">
+	<div class="col s12" style="background-color: white;">
+		<div class="m-global-header">
+			<div class="m-global-header__head">
+				<div class="container">
+					<img th:src="@{images/logo.png}" style="height: 42px; width: 152px"
+						alt="Fujifilm Value from Innovation"> <span
+						class="m-global-header__region linkline"> FUJIFILM Business
+						Innovation </span>
+				</div>
+			</div>
+		</div>
+		<div class="divider"></div>
+	</div>
+	<div th:switch="${jobAttributes}" class="col s12">
+		<div class="center">
+			<span th:case="null" class="font-size"><b>No Jobs yet!</b></span>
+			<div th:case="*">
+				<span class="font-size"><b>Job List</b></span>
+				<table cellspacing="0" cellpadding="0" id="item" class="list">
+					<thead>
+						<tr>
+							<th>Payload</th>
+							<th>Job Type</th>
+							<th>Quick Job</th>
+							<th>Skip Fulfilment</th>
+							<th>Skip PrintQuote</th>
+							<th>Skip Review</th>
+							<th>Last Updated</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="job : ${jobAttributes}">
+							<td><a
+								th:href="@{/index/{payloadId}(payloadId=${job.payload})}"
+								th:text="${job.payload}" onclick="openPopup(event)"> </a></td>
+							<td th:text="${job.jobType}"></td>
+							<td><span th:if="${job.quickJob == 'Y'}"><img
+									th:src="@{images/icon-tick.png}" class="display-image"></span> <span
+								th:unless="${job.quickJob == 'Y'}"><img
+									th:src="@{images/icon-cross.png}" class="display-image"></span>
+							</td>
+							<td><span th:if="${job.skipPrintFulfilment == 'Y'}"><img
+									th:src="@{images/icon-tick.png}" class="display-image"></span> <span
+								th:unless="${job.skipPrintFulfilment == 'Y'}"><img
+									th:src="@{images/icon-cross.png}" class="display-image"></span>
+							</td>
+							<td><span th:if="${job.skipPrintQuote == 'Y'}"><img
+									th:src="@{images/icon-tick.png}" class="display-image"></span> <span
+								th:unless="${job.skipPrintQuote == 'Y'}"><img
+									th:src="@{images/icon-cross.png}" class="display-image"></span>
+							</td>
+							<td><span th:if="${job.skipReview == 'Y'}"><img
+									th:src="@{images/icon-tick.png}" class="display-image"></span> <span
+								th:unless="${job.skipReview == 'Y'}"><img
+									th:src="@{images/icon-cross.png}" class="display-image"></span>
+							</td>
+							<td
+								th:text="${#dates.format(job.lastUpdated, 'dd-MM-yyyy hh:mm:ss')}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
