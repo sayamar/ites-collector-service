@@ -125,7 +125,7 @@ Spring 6 XML Configuration: its always use https instead of http
 __________________________________________________________________________
 
 For Java-based configuration, replace deprecated methods:
-
+```java
 @Configuration
 public class AppConfig {
     @Bean
@@ -133,10 +133,10 @@ public class AppConfig {
         return new SomeServiceImpl();
     }
 }
-
+```
 5. Security Configuration
 Replace WebSecurityConfigurerAdapter with SecurityFilterChain:
-
+```java
 @Configuration
 public class SecurityConfig {
 
@@ -150,18 +150,20 @@ public class SecurityConfig {
         return http.build();
     }
 }
-
+```
 6. Authorization Changes
 Use authorizeHttpRequests() instead of authorizeRequests():
-
+```java
 http
     .authorizeHttpRequests(authz -> authz
         .requestMatchers("/admin/**").hasRole("ADMIN")
         .anyRequest().authenticated()
     );
+```
 7. Functional Style Configuration
 Adopt functional style for methods like cors() and csrf():
-
+```java
 http
     .cors(cors -> cors.disable())
     .csrf(csrf -> csrf.disable());
+```
