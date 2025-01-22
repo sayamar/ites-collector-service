@@ -87,18 +87,18 @@ In your pom.xml, update the Spring dependencies to the latest version:
 ```
 2. Java Version
 Ensure your project is using Java 17 or higher:
-
+```xml
 <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
 </properties>
-
+```
 3. Namespace Changes
 Update your imports from javax to jakarta:
-
+```java
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+```
 4. Configuration Changes
 For XML-based configuration, update schema references:
 
