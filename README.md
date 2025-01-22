@@ -103,20 +103,25 @@ import jakarta.servlet.http.HttpServletResponse;
 For XML-based configuration, update schema references:
 
 Spring 5 XML Configuration:
+
+______________________________________________________________________
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- Your bean definitions -->
 </beans>
-
+_____________________________________________________________________________
 Spring 6 XML Configuration: its always use https instead of http
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            https://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- Your bean definitions -->
 </beans>
+
+__________________________________________________________________________
 
 For Java-based configuration, replace deprecated methods:
 
