@@ -4,7 +4,7 @@ Spring 5 to Spring 6 migration
 In your pom.xml, update the Spring dependencies to the latest version:
 
  pom.xml for Spring 5
-
+```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -43,9 +43,9 @@ In your pom.xml, update the Spring dependencies to the latest version:
         </plugins>
     </build>
 </project>
-
+```
  pom.xml for Spring 6
- 
+ ```xml 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -84,7 +84,7 @@ In your pom.xml, update the Spring dependencies to the latest version:
         </plugins>
     </build>
 </project>
-
+```
 2. Java Version
 Ensure your project is using Java 17 or higher:
 
@@ -103,7 +103,7 @@ import jakarta.servlet.http.HttpServletResponse;
 For XML-based configuration, update schema references:
 
 Spring 5 XML Configuration:
-
+```xml
 ______________________________________________________________________
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -111,16 +111,17 @@ ______________________________________________________________________
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- Your bean definitions -->
 </beans>
+```
 _____________________________________________________________________________
 Spring 6 XML Configuration: its always use https instead of http
-
+```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            https://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- Your bean definitions -->
 </beans>
-
+```
 __________________________________________________________________________
 
 For Java-based configuration, replace deprecated methods:
